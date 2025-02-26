@@ -55,7 +55,7 @@ div.loginReg {
     border: 2px solid #092c145d;
 }
 
-div.loginReg h1{
+div.loginReg h2{
     text-align: center;
     padding: 14px 16px;
     color: #092c14;
@@ -83,6 +83,7 @@ div.posting{
     margin: 0 auto;
     width: 50%;
     border-radius: 10%;
+    border: 2px solid #092c145d;
 }
 
 div.posting h3{
