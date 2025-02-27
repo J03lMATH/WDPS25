@@ -115,5 +115,13 @@ form.post input[type=submit]{
     cursor: pointer;
 }
 
+img{
+    width: 50%;
+    display: block;
+    margin: auto;
+    text-align: center;
+    border-radius: 25px;
+    margin-top: 20px;
+}
 
 
