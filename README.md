@@ -11,3 +11,9 @@ The website should also allow users to create groups, so that they can work toge
 The current ERD and relations are as follows: \
 ![ERD model!](/assets/images/ERDmodel.png "ERDmodel")
 
+![relations!](/assets/images/relations.jpg "realtions")
+
+the current database is as follows: \
+![database!](/assets/images/database.png "database")
+
+
