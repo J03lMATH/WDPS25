@@ -4,7 +4,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" href="style.css">
 
-    <script defer src="main.js"></script>
 </head>
 
 <body>
@@ -22,13 +21,15 @@
     <div class="loginReg">
         <h2>Login</h2>
         <hr>
-        <form class="logReg" action="to-some-server" method="post" id="loginForm">
+        <form class="logReg" id="loginForm">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required>
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required>
-            <input type="submit" value="LOGIN">
+            <input type="submit" value="Login">
         </form>
     </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
