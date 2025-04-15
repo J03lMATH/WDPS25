@@ -138,7 +138,6 @@ function login(e) {
 
         //to show error message if username is empty
         errorSection.innerText = "Username is required";
-        return;
     }
     
        
