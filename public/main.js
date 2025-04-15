@@ -50,29 +50,80 @@ class User{
 }
 
 const users = [
+    {
+        userId: 123,
+        username: "JM15",
+        email: "joel04mathew@gmail.com",
+        fName: "Joel",
+        lName: "Mathew",
+        password: "coolPass",
+    },
+    {
+        userId: 132,
+        username: "Joey",
+        email: "joeDane@gmail.com",
+        fName: "Joe",
+        lName: "Dane",
+        password: "12345831",
+    }
 ];
 
-const user1 = new User(123, "JM15", "joel04mathew@gmail.com", "Joel", "Mathew", "12345678");
-const user2 = new User(132, "Joey", "joeDane@gmail,com", "Joe", "Dane", "12345831");
+//const user1 = new User(123, "JM15", "joel04mathew@gmail.com", "Joel", "Mathew", "12345678");
+//const user2 = new User(132, "Joey", "joeDane@gmail,com", "Joe", "Dane", "12345831");
 
-console.log(user1.userId);
-console.log(user1); 
-console.log(user1.getFullName());
+//praticing User values
+//console.log(user1.userId);
+//console.log(user1); 
+//console.log(user1.getFullName());
 
-console.log(users);
+//console.log(users);
 
-users.push(user1);
-users.push(user2);
+//users.push(user1);
+//users.push(user2);
 
 console.log(users);
 
 
 users.forEach(function(users) {
-    console.log(users.getFullName());
+    console.log(users.username + " : " + users.email + " : " + users.fName + " " + users.lName);
 })
 
+
+//Register Form
+let registerForm = document.getElementById("registerForm");
+if(registerForm){
+    registerForm.addEventListener("submit", register)
+}
+
+function register(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById("regUsername").value;
+    const email = document.getElementById("regEmail").value;
+    const fName = document.getElementById("regFName").value;
+    const lName = document.getElementById("regLName").value;
+    const password = document.getElementById("regPassword").value;
+
+    const userId = Math.floor(Math.random() * 1000); // random ID for now
+
+    const newUser = new User(userId, username, email, fName, lName, password);
+    users.push(newUser);
+
+    console.log("New user registered:");
+    console.log(newUser);
+    console.log("All users:", users);
+
+    document.getElementById("registerMessage").innerText = `User ${newUser.getFullName()} registered successfully!`;
+
+    // Clear form
+    registerForm.reset();
+}
+
+//loginForm
 let loginForm = document.getElementById("loginForm");
+if(loginForm){
 loginForm.addEventListener("submit", login)
+}
 
 function login(e) {
     e.preventDefault();
@@ -93,7 +144,6 @@ function login(e) {
        
         //login the user if username and password are not empty
 
-        errorSection.innerText =""
         console.log(username);
 
         const user = {
@@ -118,60 +168,62 @@ function validString(word) {
 
 
 
-// class FeedBack{
-//     constructor(username, feedback){
-//         this.username = username;
-//         this.feedback = feedback;
-//     }
+ class FeedBack{
+     constructor(username, feedback){
+         this.username = username;
+         this.feedback = feedback;
+     }
 
-//     getUsername(){
-//         return this.username;
-//     }
-//     setUsername(username){
-//         this.username = username;
-//     }
+     getUsername(){
+         return this.username;
+     }
+     setUsername(username){
+         this.username = username;
+     }
 
-//     getFeedback(){
-//         return this.feedback;
-//     }
-//     setFeedback(feedback){
-//         this.feedback = feedback;
-//     }
+     getFeedback(){
+         return this.feedback;
+     }
+     setFeedback(feedback){
+         this.feedback = feedback;
+     }
 
-//     printFeedback(){
-//         console.log(this.username + " : " + this.feedback);
-//     }
-// }
+     printFeedback(){
+         console.log(this.username + " : " + this.feedback);
+     }
+ }
 
-// const feedbacks = [
-//     {
-//         username: "Joey",
-//         feedback: "Great service!"
-//     },
-//     {
-//         username: "JM15",
-//         feedback: "Very helpful!"
-//     }
-// ];
+ const feedbacks = [
+     {
+         username: "Joey",
+         feedback: "Great service!"
+     },
+     {
+         username: "JM15",
+         feedback: "Very helpful!"
+     }
+ ];
 
-// console.log(feedbacks);
+ console.log(feedbacks);
 
-// feedbacks.forEach((feedback) => {
-//     console.log(feedback.username + " : " + feedback.feedback);
-// })
+ feedbacks.forEach((feedback) => {
+     console.log(feedback.username + " : " + feedback.feedback);
+ })
 
-// let feedbackForm = document.getElementById("feedbackForm");
-// feedbackForm.addEventListener("submit", submitFeedback)
+ let feedbackForm = document.getElementById("feedbackForm");
+ if(feedbackForm){
+ feedbackForm.addEventListener("submit", submitFeedback)
+    }
 
-// function submitFeedback(e) {
-//     e.preventDefault();
+ function submitFeedback(e) {
+     e.preventDefault();
 
-//     const username = document.getElementById("username").value;
-//     const feedback = document.getElementById("feedback").value;
+     const username = document.getElementById("username").value;
+     const feedback = document.getElementById("feedback").value;
 
-//     feedbacks.push(new FeedBack(username, feedback));
-//     console.log(feedbacks);
-// }
+     feedbacks.push(new FeedBack(username, feedback));
+     console.log(feedbacks);
+ }
 
 
  
