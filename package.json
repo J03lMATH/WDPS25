@@ -1,0 +1,31 @@
+{
+  "name": "cmi",
+  "version": "1.0.0",
+  "description": "<h1> Community Problem Helper </h1>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/J03lMATH/WDPS25.git"
+  },
+  "keywords": [
+    "cmi"
+  ],
+  "author": "Joel Mathew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/J03lMATH/WDPS25/issues"
+  },
+  "homepage": "https://github.com/J03lMATH/WDPS25#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
