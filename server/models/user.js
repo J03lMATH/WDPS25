@@ -35,7 +35,7 @@ createTable();
 
 async function getAllUsers(){
     let sql = `SELECT * FROM User`;
-    let result = await con.query(sql);
+    return await con.query(sql);
 }
 
 const user = {

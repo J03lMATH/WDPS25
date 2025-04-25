@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 
 const userRoutes = require('./server/routes/user');
+const feedbackRoutes = require('./server/routes/feedback');
 
 //CORS Middleware
 app.use(function(req, res, next) {
@@ -13,6 +14,7 @@ app.use(function(req, res, next) {
 })
 
 app.use("/users", userRoutes);
+app.use("/feedback", feedbackRoutes);
 
 const PORT = process.env.PORT || 3000;
 
