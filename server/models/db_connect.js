@@ -1,4 +1,4 @@
-require('dotenv').config
+require('dotenv').config();
 const mysql = require('mysql2');
 
 const con = mysql.createPool({
@@ -15,6 +15,7 @@ const query= (sql, binding) => {
             if(err) {
                 reject(err)
             }
+            resolve(result)
         })
     })
 }

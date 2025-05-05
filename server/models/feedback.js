@@ -9,7 +9,7 @@
     }
 ];
 
-*/
+
 const con = require('./db_connect.js');
 
 async function createTable() {
@@ -32,4 +32,4 @@ async function addFeedback(feedback) {
     return await con.query(sql, [feedback.username, feedback.feedback]);
 }
 
-module.exports = {  getAllFB, addFeedback };
+module.exports = {  getAllFB, addFeedback };*/

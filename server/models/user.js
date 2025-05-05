@@ -38,13 +38,14 @@ async function getAllUsers(){
     return await con.query(sql);
 }
 
+/*
 const user = {
     username: "bobbyBoy",
     email: "bob@gmail.com",
     fName: "Bob",
     lName: "Bobson",
     password: "bobcool"
-}
+}*/
 
 //Login a user
 async function login(user){
@@ -60,5 +61,43 @@ async function login(user){
 }
 
 
+async function getUser(user){
+    let sql;
+    if(user.userId){
+        sql = `SELECT * FROM users WHERE userId =${user.userId}`;
+    }
+    else {
+        sql = `SELECT * FROM users WHERE username = "${user.username}"`;
+    }
 
-module.exports = { getAllUsers, login };
+    return await con.query(sql);
+}
+
+async function register(user){
+    const cUser = await userExists(user.Username)
+   if(cUser.length > 0) {
+    throw Error("Username already in use!")
+   }
+ 
+   let sql = `
+     INSERT INTO User(password, username, email, firstName, lastName)
+     VALUES("${user.Password}", "${user.Username}", "${user.Email}", "${user.FirstName}", "${user.LastName}")
+   `
+   await con.query(sql)
+ 
+   return await login(user)
+}
+
+async function editUsername(user){
+    let sql = `UPDATE users SET username = "${user.username}" WHERE userId = ${user.userId}`;
+    await con.query(sql);
+    const cUser = await userExists(user.username)
+    return cUser[0]
+}
+
+async function deleteAccount(userId){
+    let sql = `DELETE FROM users WHERE userId = ${userId}`;
+    await con.query(sql);
+}
+
+module.exports = { getAllUsers, login, getUser, register, editUsername, deleteAccount };
