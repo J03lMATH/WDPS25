@@ -33,8 +33,16 @@ async function createTable() {
 createTable();
 
 
+async function userExists(username) {
+    const sql = `SELECT * FROM users WHERE username = ?`;
+    const result = await con.query(sql, [username]);
+    console.log("userExists result:", result); // ← Add this
+    return result;
+}
+
+
 async function getAllUsers(){
-    let sql = `SELECT * FROM User`;
+    let sql = `SELECT * FROM users`;
     return await con.query(sql);
 }
 
@@ -49,8 +57,11 @@ const user = {
 
 //Login a user
 async function login(user){
+
+    console.log(user)
+
     let cUser = await userExists(user.username);
-    if(!cIser[0]){
+    if(!cUser[0]){
         throw Error ("User does not exist");
     }
     if(cUser[0].password !== user.password){
@@ -81,8 +92,8 @@ async function register(user){
    }
  
    let sql = `
-     INSERT INTO User(password, username, email, firstName, lastName)
-     VALUES("${user.Password}", "${user.Username}", "${user.Email}", "${user.FirstName}", "${user.LastName}")
+     INSERT INTO users (username, email, firstName, lastName, password)
+     VALUES("${user.Username}", "${user.Email}", "${user.FirstName}", "${user.LastName},"${user.Password}")
    `
    await con.query(sql)
  

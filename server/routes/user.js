@@ -6,14 +6,15 @@ const router = express.Router();
 router
     .get('/getAllUsers', async (req, res) => {
         try {
-            const users = await User.getAllUsers()
-            res.send(users)
+            const user = await User.getAllUsers()
+            res.send(user)
           } catch(err) {
             res.status(401).send({message: err.message})
           }
     })
 
     .post('/login', async (req, res) => {
+      console.log("Incoming req.body:", req.body);
         try {
             const user = await User.login(req.body)
             res.send({...user, password: undefined})
