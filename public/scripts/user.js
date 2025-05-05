@@ -67,18 +67,18 @@ function register(e) {
     let errorSection = document.getElementById("error")
 
     const user ={
-    Username: document.getElementById("regUsername").value,
-    Email: document.getElementById("regEmail").value,
-    FName: document.getElementById("regFName").value,
-    LName: document.getElementById("regLName").value,
-    Password: document.getElementById("regPassword").value
+    username: document.getElementById("regUsername").value,
+    email: document.getElementById("regEmail").value,
+    fName: document.getElementById("regFName").value,
+    lName: document.getElementById("regLName").value,
+    password: document.getElementById("regPassword").value
     }
 
     fetchData('/users/register', user, 'POST')
     .then(data => {
         if(!data.message) {
           setCurrentUser(data)
-          window.location.href = "food.html"
+          window.location.href = "post.html"
         }
       })
       .catch(err => {

@@ -85,17 +85,24 @@ async function getUser(user){
 }
 
 async function register(user){
-    console.log(Username)
-    const cUser = await userExists(user.Username)
+    console.log(user.username)
+    const cUser = await userExists(user.username)
    if(cUser.length > 0) {
     throw Error("Username already in use!")
    }
- 
-   let sql = `
-     INSERT INTO users (username, email, firstName, lastName, password)
-     VALUES("${user.Username}", "${user.Email}", "${user.FirstName}", "${user.LastName},"${user.Password}")
-   `
-   await con.query(sql)
+   
+   const sql= `
+   INSERT INTO users (username, email, fName, lName, password)
+   VALUES (?, ?, ?, ?, ?)
+ `;
+
+   await con.query(sql, [
+    user.username,
+    user.email,
+    user.fName,
+    user.lName,
+    user.password
+   ])
  
    return await login(user)
 }
@@ -109,6 +116,11 @@ async function editUsername(user){
 
 async function deleteAccount(userId){
     let sql = `DELETE FROM users WHERE userId = ${userId}`;
+    await con.query(sql);
+}
+
+async function logout(userId){
+    let sql = `UPDATE users SET loggedIn = 0 WHERE userId = ${userId}`;
     await con.query(sql);
 }
 
