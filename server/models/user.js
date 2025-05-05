@@ -74,6 +74,7 @@ async function getUser(user){
 }
 
 async function register(user){
+    console.log(Username)
     const cUser = await userExists(user.Username)
    if(cUser.length > 0) {
     throw Error("Username already in use!")

@@ -83,25 +83,26 @@ if(registerForm){
 function register(e) {
     e.preventDefault();
     
-    const username = document.getElementById("regUsername").value;
-    const email = document.getElementById("regEmail").value;
-    const fName = document.getElementById("regFName").value;
-    const lName = document.getElementById("regLName").value;
-    const password = document.getElementById("regPassword").value;
+    let errorSection = document.getElementById("error")
 
-    const userId = Math.floor(Math.random() * 1000); // random ID for now
+    const user ={
+    Username: document.getElementById("regUsername").value,
+    Email: document.getElementById("regEmail").value,
+    FName: document.getElementById("regFName").value,
+    LName: document.getElementById("regLName").value,
+    Password: document.getElementById("regPassword").value
+    }
 
-    const newUser = new User(userId, username, email, fName, lName, password);
-    users.push(newUser);
-
-    console.log("New user registered:");
-    console.log(newUser);
-    console.log("All users:", users);
-
-    document.getElementById("registerMessage").innerText = `User ${newUser.getFullName()} registered successfully!`;
-
-    // Clear form
-    registerForm.reset();
+    fetchData('/users/register', user, 'POST')
+    .then(data => {
+        if(!data.message) {
+          setCurrentUser(data)
+          window.location.href = "food.html"
+        }
+      })
+      .catch(err => {
+        errorSection.innerText = `${err.message}`
+      })
 }
 
 // Function to check if a string is empty
