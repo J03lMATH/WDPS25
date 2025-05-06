@@ -98,12 +98,13 @@ function setCurrentUser(user) {
     localStorage.setItem('user', JSON.stringify(user))
   }
   
-  function getCurrentUser() {
+export function getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'))
   }
   
-  function removeCurrentUser() {
+export function removeCurrentUser() {
     localStorage.removeItem('user')
+    window.location.href = "index.html"
   }
 
 
