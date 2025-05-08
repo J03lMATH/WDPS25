@@ -71,19 +71,19 @@ if(postline){
 //edit a Post
 function handleEditPost(e){
     const postId = e.target.dataset.postId
-    fetchData(`/posts/getUserPosts?postId=${postId}`, {}, 'GET')
+    fetchData(`/posts/getPost?postId=${postId}`, null , 'GET')
     .then(post => {
         if(!post.message){
-            document.getElementById("title").value= post.title
-            document.getElementById("content").value= post.content
+            document.getElementById("editTitle").value= post.title
+            document.getElementById("editContent").value= post.content
 
             const editForm= document.getElementById("editForm")
             if(editForm){
                 editForm.onsubmit= function(e){
                     e.preventDefault()
                     const updatePost = {
-                        title: document.getElementById("title").value,
-                        content: document.getElementById("content").value,
+                        title: document.getElementById("editTitle").value,
+                        content: document.getElementById("editContent").value,
                         postId: postId
                     }
 
