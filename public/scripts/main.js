@@ -14,7 +14,7 @@ if(getCurrentUser()){
     nav.innerHTML =`
     <ul>
          <li><a href="post.html">Register</a></li>
-         <li><a href="index.html">Login</a></li>
+         <li><a href="login.html">Login</a></li>
      </ul>
     `
 }
@@ -35,7 +35,7 @@ export async function fetchData(route ='', data ={}, methodType) {
         headers: {
           'Content-Type': 'application/json'
         },
-        
+
         body: JSON.stringify(data) // body data type must match "Content-Type" header
       });
       if (response.ok) {
