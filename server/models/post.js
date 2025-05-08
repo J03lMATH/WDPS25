@@ -43,10 +43,17 @@ async function deletePost(postId) {
     return { success: true };
 }
 
+async function getUserPosts(userId) {
+    const sql = `SELECT * FROM posts WHERE userId = ?`;
+    const result = await con.query(sql, [userId]);
+    return result;
+}
+
 module.exports = { 
     createPost,
     getAllPosts,
     getPost,
     updatePost,
-    deletePost
+    deletePost,
+    getUserPosts
 }

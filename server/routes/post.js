@@ -49,4 +49,14 @@ router
           }
     })
 
+    .get('/getUserPosts', async (req, res) => {
+        try {
+            const userId = req.query.userId
+            const posts = await Post.getUserPosts(userId)
+            res.send(posts)
+          } catch(err) {
+            res.status(401).send({message: err.message})
+          }
+    })
+
     module.exports = router;

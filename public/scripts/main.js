@@ -30,14 +30,18 @@ if(logout){
 
 //Fetvh method implemetion
 export async function fetchData(route ='', data ={}, methodType) {
-    const response = await fetch(`http://localhost:3000${route}`, {
-        method: methodType, // *POST, PUT, DELETE, etc.
-        headers: {
-          'Content-Type': 'application/json'
-        },
-
-        body: JSON.stringify(data) // body data type must match "Content-Type" header
-      });
+  const options = {
+    method: methodType,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  };
+  if (methodType !== 'GET' && methodType !== 'DELETE') {
+    options.body = JSON.stringify(data);
+}
+  
+  
+  const response = await fetch(`http://localhost:3000${route}`, options)
       if (response.ok) {
         return await response.json(); // parses JSON response into native JavaScript objects
       } else {

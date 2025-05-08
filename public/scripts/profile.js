@@ -4,7 +4,7 @@ import { fetchData, validString} from "./main.js";
 const user = getCurrentUser()
 
 if(!user){
-    window.location.href = "post.html"
+    window.location.href = "login.html"
 }
 
 const  profile= document.getElementById("profile")

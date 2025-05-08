@@ -15,14 +15,29 @@
     <div class="posting">
         <h3>Post</h3>
         <hr>
-        <form class="post" id="feedbackForm">
-            <label for="username">Username</label>
-            <input type="text" id="username" username="username">
-            <label for="feedback">Feedback</label>
-            <textarea id="feedback" name="feedBack"></textarea>
-            <input type="submit" value="POST">
+        <form id="postForm">
+            <p class="error"></p>
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required>
+            <br>
+            <label for="content">Content</label>
+            <textarea name="content" id="content" rows="10" required></textarea>
+            <input type="submit" value="Post">
         </form>
     </div>
+
+    <div class="posting">
+        <h3>Posts</h3>
+        <hr>
+        <div id="userPosts"></div>
+    </div>
+
+    <form id="editForm">
+        <p class="error"></p>
+        <input type="text" id="title" placeholder="Title" required />
+        <textarea id="content" placeholder="Content" required></textarea>
+        <button type="submit">Update Post</button>
+    </form>
     
     <p>
         <img src="https://media.tenor.com/_Xqnh_HIQzUAAAAM/badger-mushroom.gif" alt="badger badger mushroom gif">
@@ -30,5 +45,7 @@
 
     <script type="module" src="./scripts/main.js"></script>
     <script type="module" src="./scripts/user.js"></script>
+    <script type="module" src="./scripts/post.js"></script>
+    <script type="module" src="./scripts/postingLine.js"></script>
 </body>
 </html> 
