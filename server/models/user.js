@@ -1,21 +1,3 @@
-// const users = [
-//     {
-//         userId: 123,
-//         username: "JM15",
-//         email: "joel04mathew@gmail.com",
-//         fName: "Joel",
-//         lName: "Mathew",
-//         password: "coolPass",
-//     },
-//     {
-//         userId: 132,
-//         username: "Joey",
-//         email: "joeDane@gmail.com",
-//         fName: "Joe",
-//         lName: "Dane",
-//         password: "12345831",
-//     }
-// ];
 
 const con = require('./db_connect.js');
 
@@ -119,9 +101,5 @@ async function deleteAccount(userId){
     await con.query(sql);
 }
 
-async function logout(userId){
-    let sql = `UPDATE users SET loggedIn = 0 WHERE userId = ${userId}`;
-    await con.query(sql);
-}
 
 module.exports = { getAllUsers, login, getUser, register, editUsername, deleteAccount };

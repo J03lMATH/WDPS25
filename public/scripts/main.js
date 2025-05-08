@@ -35,6 +35,7 @@ export async function fetchData(route ='', data ={}, methodType) {
         headers: {
           'Content-Type': 'application/json'
         },
+        
         body: JSON.stringify(data) // body data type must match "Content-Type" header
       });
       if (response.ok) {
@@ -42,4 +43,8 @@ export async function fetchData(route ='', data ={}, methodType) {
       } else {
         throw await response.json();
       }
+}
+
+export function validString(str) {
+  return typeof str === "string" && str.trim().length > 0;
 }

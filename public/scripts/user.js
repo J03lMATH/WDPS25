@@ -94,7 +94,7 @@ function validString(word) {
 
 //local Storage Functions
 
-function setCurrentUser(user) {
+export function setCurrentUser(user) {
     localStorage.setItem('user', JSON.stringify(user))
   }
   
@@ -104,7 +104,7 @@ export function getCurrentUser() {
   
 export function removeCurrentUser() {
     localStorage.removeItem('user')
-    window.location.href = "index.html"
+    window.location.href = "login.html"
   }
 
 
